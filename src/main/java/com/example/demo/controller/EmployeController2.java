@@ -36,7 +36,7 @@ public class EmployeController2 {
     	List<Employe> l=new ArrayList<>();
     for(int i=0;i<employeService.getGetAll().size();i++) {
     	
-    		if(employeService.getGetAll().get(i).getIdService().getId()==idS)
+    		if(employeService.getGetAll().get(i).getService().getId()==idS)
     			l.add(employeService.getGetAll().get(i));
 			
 		}

@@ -20,18 +20,18 @@ public class Employe  extends Personne{
 	private String  email;
     private String Telephone;
     
-    @JoinColumn(name = "idService", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Service idService;
+    @ManyToOne
+    private Service service;
 
  
    
    
-    public Employe(Integer id, String nom, String prenom,String eml,String tel) {
+    public Employe(Integer id, String nom, String prenom,String eml,String tel,Service serv) {
 		super(id, nom, prenom);
 		
 		this.email=eml;
 		this.Telephone=tel;
+		this.service=serv;
 	}
 
 	
@@ -59,13 +59,19 @@ public class Employe  extends Personne{
 		Telephone = telephone;
 	}
 
-	public Service getIdService() {
-		return idService;
+
+
+	public Service getService() {
+		return service;
 	}
 
-	public void setIdService(Service idService) {
-		this.idService = idService;
+
+
+	public void setService(Service service) {
+		this.service = service;
 	}
+
+	
     
     
 }

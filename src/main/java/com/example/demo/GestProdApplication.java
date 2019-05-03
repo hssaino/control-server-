@@ -34,7 +34,8 @@ ConfigurableApplicationContext ctx = SpringApplication.run(GestProdApplication.c
 //			
 //			serviceRepository.save(s1);
 //			
-//			employeRepository.save(new Employe(1, "aaa", "sss", "email2", "tel2",s));
+		long id=1;
+		employeRepository.save(new Employe(1, "aaa", "sss", "email2", "tel2",serviceRepository.findById(id).get()));
 	
 	}
 }

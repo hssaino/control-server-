@@ -1,74 +1,79 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.demo.entity;
-
 
 import java.util.List;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.Transient;
 
 @Entity
-public class Service  {
+public class Service {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	private String nom;
+	@Transient
+	@OneToMany(mappedBy="service")
+	private List<Employe> employes;
+	
+	public Service() {
+		super();
+	}
 
-   
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   
-    private long id;
-   
-    private String nom;
-    
-    
+	public Service(long id, String nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
 
-    public Service() {
-    }
+	public long getId() {
+		return id;
+	}
 
-    public Service(long id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public Service(long id, String nom) {
-        this.id = id;
-        this.nom = nom;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public long getId() {
-        return id;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public List<Employe> getEmployes() {
+		return employes;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public void setEmployes(List<Employe> employes) {
+		this.employes = employes;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	
 
-   
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Service other = (Service) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
+	
+	
 
-  
-    
-
-
-    @Override
-    public String toString() {
-        return "entity.Service[ id=" + id + " ]";
-    }
-    
 }

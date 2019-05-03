@@ -25,7 +25,7 @@ import com.example.demo.service.ServiceService;
 @CrossOrigin
 public class ServiceController {
     @Autowired
-	private Idao<Service> serviceService;
+	private ServiceService serviceService;
     
     
     
